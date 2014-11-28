@@ -32,7 +32,7 @@
             m.Body = Model.Name + " is" + ((Model.WillAttend ?? false) ? "" : " not") + " attending";
             sc.Host = "smtp.gmail.com";
             sc.Port = 587;
-            sc.Credentials = new System.Net.NetworkCredential("m.speakman89@googlemail.com", "1nfinity");
+            sc.Credentials = new System.Net.NetworkCredential("m.speakman89@googlemail.com", "myPassword");
             sc.EnableSsl = true;
             sc.Send(m);
         }
