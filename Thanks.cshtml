@@ -1,6 +1,6 @@
 <!--The Thanks View-->
 @model PartyInvites.Models.GuestResponse
-
+@using PartyInvites.Models;
 @{
     Layout = null;
 }
@@ -18,31 +18,6 @@
     </style>
 </head>
 <body>
-    @{
-        try
-        {
-            System.Net.Mail.MailMessage m = new System.Net.Mail.MailMessage();
-            System.Net.Mail.SmtpClient sc = new System.Net.Mail.SmtpClient();
-
-            m.From = new System.Net.Mail.MailAddress("m.speakman89@googlemail.com");
-            m.To.Add("matt@mattspeakman.co.uk");
-            m.Subject = "RSVP Notification";
-            m.IsBodyHtml = true;
-
-            m.Body = Model.Name + " is" + ((Model.WillAttend ?? false) ? "" : " not") + " attending";
-            sc.Host = "smtp.gmail.com";
-            sc.Port = 587;
-            sc.Credentials = new System.Net.NetworkCredential("m.speakman89@googlemail.com", "myPassword");
-            sc.EnableSsl = true;
-            sc.Send(m);
-        }
-        catch (Exception e)
-        {
-            @:<b>Sorry - we couldn't send the email to confirm your RSVP\r\n</b>
-            @e.Message
-        }
-    }
-
     <div class="text-center">
         <h1>Thankyou, @Model.Name!</h1>
         <div class="lead">
@@ -55,6 +30,7 @@
                 @:Sorry to hear that you can't make it, but thanks for letting us know.
             }
         </div>
+        <div>@ViewBag.Message</div>
     </div>
 </body>
 </html>
