@@ -27,6 +27,9 @@ namespace PartyInvites.Controllers
         {
             if (ModelState.IsValid)
             {
+                string msg = SendEmail.SendEmails(guestResponse.Name.ToString(), guestResponse.WillAttend.ToString());
+                ViewBag.Message = msg;
+
                 return View("Thanks", guestResponse);
             }
             else
