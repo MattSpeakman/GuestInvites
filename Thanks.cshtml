@@ -30,7 +30,7 @@
                 @:Sorry to hear that you can't make it, but thanks for letting us know.
             }
         </div>
-        <div>@ViewBag.Message</div>
+        <div>@SendEmail.SendEmails(Model.Name.ToString(), Model.WillAttend.ToString())</div>
     </div>
 </body>
 </html>
